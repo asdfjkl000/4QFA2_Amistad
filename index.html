@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiplication Table - by Rows and Columns</title>
+</head>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 25vh;
+    }
+
+    p {
+        text-align: center;
+        color: #666;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    input[type="number"] {
+        padding: 5px;
+        margin: 25px;
+        width: 100px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin-left: 3vh;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #tablee {
+        margin-top: 20px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin: 0 auto;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #ffe2e2;
+    }
+
+    td {
+        background-color: #f9f9f9;
+    }
+
+</style>
+<body>
+    <h2>Multiplication Table by Rows and Columns</h2>
+    <p>Enter the beginning and end numbers between 2 and 10 on the boxes provided. Click Show Table when done.
+    </p>
+    <input type="number" id="start" min="2" max="10" placeholder="Column"> 
+    <input type="number" id="end" min="2" max="10" placeholder="Row"> 
+
+    <button onclick="generateTable()">Show Table</button>
+
+    <div id="tablee"></div>
+
+    <script>
+
+        function generateTable(){
+        var table = "";
+
+        var columns = parseInt(document.getElementById("start").value);
+        var rows = parseInt(document.getElementById("end").value);  
+        
+
+        if (isNaN(columns) || isNaN(rows) || columns < 2 || columns > 10 || rows < 2 || rows > 10)
+        {
+            alert("Please enter numbers between 2 and 10.");
+            return;
+        }
+
+        for(var forColumns = 1; forColumns <= columns; forColumns++)
+        {
+            for(var forRows = 1; forRows <= rows; forRows++)
+            {
+                table += "<td>" + (forRows * forColumns) + "</td>";
+            }
+             table += "<tr>";
+        }
+        document.getElementById("tablee").innerHTML="<table border ='3'><tr>" + table + "</tr></table>";
+
+    }
+    </script>
+</body>
+</html>
